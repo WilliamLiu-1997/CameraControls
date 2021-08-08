@@ -16,7 +16,7 @@ THREE.CameraControls = function (object, domElement) {
 
 	this.angleX = 0;
 	this.angleY = 0;
-	this.look = new THREE.Vector3(0, 0, -1);
+	this.look = new THREE.Vector3();
 	this.stop = false;
 
 	this.o = new THREE.Vector3(0, 0, 0)
