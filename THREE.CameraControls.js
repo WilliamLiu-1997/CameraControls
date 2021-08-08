@@ -272,11 +272,11 @@ THREE.CameraControls = function (object, domElement) {
 
 	}();
 
-	var panUp_Distance = function () {
+	var moveForward = function () {
 
 		var v = new THREE.Vector3();
 
-		return function panUp(distance) {
+		return function moveForward(distance) {
 
 			v.copy(scope.look)
 
@@ -324,7 +324,7 @@ THREE.CameraControls = function (object, domElement) {
 
 		if (scope.object.isPerspectiveCamera) {
 
-			panUp_Distance(-50 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
+			moveForward(-50 * scope.sensibility * dollyScale / element.clientHeight);
 
 		} else if (scope.object.isOrthographicCamera) {
 
@@ -347,7 +347,7 @@ THREE.CameraControls = function (object, domElement) {
 
 		if (scope.object.isPerspectiveCamera) {
 
-			panUp_Distance(50 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
+			moveForward(50 * scope.sensibility * dollyScale / element.clientHeight);
 
 		} else if (scope.object.isOrthographicCamera) {
 
