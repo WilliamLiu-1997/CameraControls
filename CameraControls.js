@@ -59,7 +59,7 @@ THREE.CameraControls = function (object, domElement) {
 	// Set to true to automatically rotate around the target
 	// If auto-rotate is enabled, you must call controls.update() in your animation loop
 	this.autoRotate = false;
-	this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
+	this.autoRotateSpeed = 0.2;
 
 	// Set to false to disable use of the keys
 	this.enableKeys = true;
@@ -68,7 +68,7 @@ THREE.CameraControls = function (object, domElement) {
 	this.keys = { LEFT: 37, UP: 38, RIGHT: 39, BOTTOM: 40 };
 
 	// Mouse buttons
-	this.mouseButtons = { ORBIT: THREE.MOUSE.LEFT, ZOOM: THREE.MOUSE.MIDDLE, PAN: THREE.MOUSE.RIGHT };
+	this.mouseButtons = { ORBIT: THREE.MOUSE.RIGHT, ZOOM: false, PAN: THREE.MOUSE.MIDDLE };
 
 	// for reset
 	this.target0 = this.target.clone();
