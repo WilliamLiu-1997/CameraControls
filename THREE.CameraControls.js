@@ -7,12 +7,10 @@
  * @author William / https://github.com/WilliamLiu-1997
  */
 
-// This set of controls performs orbiting, dollying (zooming), and panning.
-// Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
-//
-//    Orbit - left mouse / touch: one finger move
-//    Zoom - middle mouse, or mousewheel / touch: two finger spread or squish
-//    Pan - right mouse, or arrow keys / touch: three finger swipe
+// This set of controls performs rotating, dollying (zooming), and panning.
+//    Pan - middle mouse / touch: one finger move
+//    Move forward/backward - mousewheel / touch: two finger spread or squish
+//    Rotate - right mouse, or arrow keys / touch: three finger swipe
 
 THREE.CameraControls = function (object, domElement) {
 
