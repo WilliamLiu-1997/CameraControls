@@ -8,9 +8,9 @@
  */
 
 // This set of controls performs turning, dollying (zooming), and panning.
-//    Pan - middle mouse / touch: one finger move
-//    Move forward/backward - mousewheel / touch: two finger spread or squish
-//    Turn - right mouse, or arrow keys / touch: three finger swipe
+// Pan up / down / left / right  - middle mouse / touch: one finger move
+// Move forward / backward  - mousewheel / touch: two finger spread or squish
+// Turn  - right mouse, or arrow keys / touch: three finger swipe
 
 THREE.CameraControls = function (object, domElement) {
 

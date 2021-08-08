@@ -4,7 +4,7 @@ import {
     Quaternion,
     Vector2,
     Vector3
-}  from '../../../build/three.module.js';
+} from '../../../build/three.module.js';
 /**
  * @author qiao / https://github.com/qiao
  * @author mrdoob / http://mrdoob.com
@@ -15,9 +15,9 @@ import {
  */
 
 // This set of controls performs turning, dollying (zooming), and panning.
-//    Pan - middle mouse / touch: one finger move
-//    Move forward/backward - mousewheel / touch: two finger spread or squish
-//    Turn - right mouse, or arrow keys / touch: three finger swipe
+// Pan up / down / left / right  - middle mouse / touch: one finger move
+// Move forward / backward  - mousewheel / touch: two finger spread or squish
+// Turn  - right mouse, or arrow keys / touch: three finger swipe
 class CameraControls extends EventDispatcher {
     constructor(object, domElement) {
         super();
