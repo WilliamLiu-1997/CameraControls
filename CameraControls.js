@@ -41,8 +41,8 @@ class CameraControls extends EventDispatcher {
         this.enableDamping = false;
         this.dampingFactor = 0.1;
 
-        // "target" sets the location of focus, where the object orbits around
-        this.target = new Vector3();
+        // "target" sets the location
+        this.target = this.object.position;
 
         // "look" sets the direction of the focus
         this.look = new Vector3();
@@ -126,12 +126,6 @@ class CameraControls extends EventDispatcher {
         // this method is exposed, but perhaps it would be better if we can make it private...
         this.update = function () {
 
-            var offset = new Vector3();
-
-            // so camera.up is the orbit axis
-            var quat = new Quaternion().setFromUnitVectors(object.up, new Vector3(0, 1, 0));
-            var quatInverse = quat.clone().invert();
-
             var lastPosition = new Vector3();
             var lastQuaternion = new Quaternion();
 
@@ -142,11 +136,6 @@ class CameraControls extends EventDispatcher {
                 if (scope.dynamicSensibility) {
                     scope.sensibility = Math.max(1, scope.object.position.distanceTo(scope.o))
                 }
-
-                offset.copy(position).sub(scope.target);
-
-                // rotate offset to "y-axis-is-up" space
-                offset.applyQuaternion(quat);
 
                 if (scope.autoRotate && state === STATE.NONE) {
 
@@ -169,10 +158,7 @@ class CameraControls extends EventDispatcher {
                     scope.target.multiplyScalar(scope.maxDistance / distance)
                 }
 
-                // rotate offset back to "camera-up-vector-is-up" space
-                offset.applyQuaternion(quatInverse);
-
-                position.copy(scope.target).add(offset);
+                position.copy(scope.target);
 
 
                 if (scope.enableDamping) {
@@ -910,6 +896,5 @@ class CameraControls extends EventDispatcher {
 
     };
 }
-
 
 export { CameraControls };
