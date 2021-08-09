@@ -7,8 +7,8 @@ import {
 } from '../../../build/three.module.js';
 
 // This set of controls performs turning, dollying (zooming), and panning. It is an update of OrbitControls
-// Pan up / down / left / right  - middle mouse / touch: one finger move
-// Move forward / backward  - mousewheel / touch: two finger spread or squish
+// Pan up / down / left / right  - middle mouse or WASD keys / touch: one finger move
+// Move forward / backward  - mousewheel or WASD keys / touch: two finger spread or squish
 // Turn  - right mouse, or arrow keys / touch: three finger swipe
 
 // Updates compared to OrbitControls:
