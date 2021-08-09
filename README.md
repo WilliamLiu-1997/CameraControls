@@ -12,6 +12,6 @@ This set of controls performs turning, dollying (zooming), and panning.
 
 ## Updates compared to OrbitControls:
 1. The dollying of PerspectiveCamera is replaced with panning forward and backward. Therefore, this component can be used to move the PerspectiveCamera to six directions including forward, backward, up, down, left and right from current perspective.
-2. The turning will be conducted using the PerspectiveCamera as the center.
+2. The rotation will be conducted using the PerspectiveCamera as the center.
 
 
