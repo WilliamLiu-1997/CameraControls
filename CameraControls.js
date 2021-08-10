@@ -65,7 +65,7 @@ class CameraControls extends EventDispatcher {
         // Set to false to disable rotating
         this.enableRotate = true;
         this.invertRotate = false;
-        this.rotateSpeed = 0.08;
+        this.rotateSpeed = 1.0;
 
         // Set to false to disable panning
         this.enablePan = true;
@@ -287,13 +287,13 @@ class CameraControls extends EventDispatcher {
 
             if (scope.invertRotate) {
 
-                angleXDelta += angleX * 100 * scope.rotateSpeed;
-                angleYDelta -= angleY * 50 * scope.rotateSpeed;
+                angleXDelta += angleX * 8 * scope.rotateSpeed;
+                angleYDelta -= angleY * 4 * scope.rotateSpeed;
 
             } else {
 
-                angleXDelta -= angleX * 100 * scope.rotateSpeed;
-                angleYDelta += angleY * 50 * scope.rotateSpeed;
+                angleXDelta -= angleX * 8 * scope.rotateSpeed;
+                angleYDelta += angleY * 4 * scope.rotateSpeed;
 
             }
 
