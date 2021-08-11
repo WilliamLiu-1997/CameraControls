@@ -28,7 +28,7 @@ class CameraControls extends EventDispatcher {
 
         this.stop = false;
 
-        this.o = new Vector3(0, 0, 0)
+        this.o = new Vector3(0, 0, 0);
 
         this.object = object;
 
@@ -183,7 +183,6 @@ class CameraControls extends EventDispatcher {
                 scope.look.y = Math.sin(scope.angleY)
                 scope.look.normalize()
 
-
                 let look = position.clone();
                 look.add(scope.look);
                 scope.object.lookAt(look);
@@ -274,12 +273,6 @@ class CameraControls extends EventDispatcher {
         function getAutoRotationAngle() {
 
             return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
-
-        }
-
-        function getZoomScale() {
-
-            return Math.pow(0.95, scope.zoomSpeed);
 
         }
 
@@ -468,11 +461,11 @@ class CameraControls extends EventDispatcher {
 
             if (dollyDelta.y > 0) {
 
-                dollyForward(getZoomScale());
+                dollyForward(scope.zoomSpeed);
 
             } else if (dollyDelta.y < 0) {
 
-                dollyBackward(getZoomScale());
+                dollyBackward(scope.zoomSpeed);
 
             }
 
@@ -504,11 +497,11 @@ class CameraControls extends EventDispatcher {
 
             if (event.deltaY < 0) {
 
-                dollyBackward(getZoomScale());
+                dollyBackward(scope.zoomSpeed);
 
             } else if (event.deltaY > 0) {
 
-                dollyForward(getZoomScale());
+                dollyForward(scope.zoomSpeed);
 
             }
 
@@ -553,12 +546,12 @@ class CameraControls extends EventDispatcher {
                 switch (event.keyCode) {
 
                     case scope.keys.FORWARD:
-                        dollyBackward(getZoomScale() * scope.keyPanSpeed);;
+                        dollyBackward(scope.zoomSpeed * scope.keyPanSpeed);;
                         scope.update();
                         break;
 
                     case scope.keys.BACKWARD:
-                        dollyForward(getZoomScale() * scope.keyPanSpeed);;
+                        dollyForward(scope.zoomSpeed * scope.keyPanSpeed);;
                         scope.update();
                         break;
 
@@ -629,11 +622,11 @@ class CameraControls extends EventDispatcher {
 
             if (dollyDelta.y > 0) {
 
-                dollyBackward(getZoomScale());
+                dollyBackward(scope.zoomSpeed / 2);
 
             } else if (dollyDelta.y < 0) {
 
-                dollyForward(getZoomScale());
+                dollyForward(scope.zoomSpeed / 2);
 
             }
 
