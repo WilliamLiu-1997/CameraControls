@@ -356,7 +356,7 @@ class CameraControls extends EventDispatcher {
 
             if (scope.object.isPerspectiveCamera) {
 
-                moveForward(-50 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
+                moveForward(-100 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
 
             } else if (scope.object.isOrthographicCamera) {
 
@@ -379,7 +379,7 @@ class CameraControls extends EventDispatcher {
 
             if (scope.object.isPerspectiveCamera) {
 
-                moveForward(50 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
+                moveForward(100 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
 
             } else if (scope.object.isOrthographicCamera) {
 
