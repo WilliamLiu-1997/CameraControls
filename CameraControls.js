@@ -132,7 +132,7 @@ class CameraControls extends EventDispatcher {
 
                 if (scope.dynamicSensibility) {
 
-                    scope.sensibility = Math.max(1, scope.object.position.distanceTo(scope.o));
+                    scope.sensibility = Math.max(1, scope.object.position.y);
 
                 }
 
@@ -165,19 +165,19 @@ class CameraControls extends EventDispatcher {
                 if (scope.enableDamping) {
 
                     scope.angleX += angleXDelta * scope.dampingFactor * 1.2;
-                    scope.angleY = Math.max(-Math.PI / 2.001, Math.min(scope.angleY + angleYDelta * scope.dampingFactor * 1.2, Math.PI / 2.001))
+                    scope.angleY = Math.max(-Math.PI / 2.001, Math.min(scope.angleY + angleYDelta * scope.dampingFactor * 1.2, Math.PI / 2.001));
 
                 } else {
 
                     scope.angleX += angleXDelta * 1.5;
-                    scope.angleY = Math.max(-Math.PI / 2.001, Math.min(scope.angleY + angleYDelta * 1.5, Math.PI / 2.001))
+                    scope.angleY = Math.max(-Math.PI / 2.001, Math.min(scope.angleY + angleYDelta * 1.5, Math.PI / 2.001));
 
                 }
 
-                scope.look.x = Math.sin(scope.angleX) * (Math.PI / 2 - Math.abs(scope.angleY))
-                scope.look.z = -Math.cos(scope.angleX) * (Math.PI / 2 - Math.abs(scope.angleY))
-                scope.look.y = Math.sin(scope.angleY)
-                scope.look.normalize()
+                scope.look.x = Math.sin(scope.angleX) * (Math.PI / 2 - Math.abs(scope.angleY));
+                scope.look.z = -Math.cos(scope.angleX) * (Math.PI / 2 - Math.abs(scope.angleY));
+                scope.look.y = Math.sin(scope.angleY);
+                scope.look.normalize();
 
                 let look = position.clone();
                 look.add(scope.look);
@@ -509,7 +509,7 @@ class CameraControls extends EventDispatcher {
                         break;
 
                     case scope.keys.TURNLEFT:
-                        rotate(-Math.PI / element.clientWidth * scope.keyRotateSpeed, 0);
+                        rotate(- Math.PI / element.clientWidth * scope.keyRotateSpeed, 0);
                         scope.update();
                         break;
 
