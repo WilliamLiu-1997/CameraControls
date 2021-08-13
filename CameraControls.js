@@ -172,14 +172,12 @@ class CameraControls extends EventDispatcher {
 
 				}
 
-				let last_look = scope.look.clone();
-
 				var low, high;
 				if (angleY_gap > 0) {
 					low = angleY_gap;
-					high = -0.0001;
+					high = 0;
 				} else {
-					low = 0.0001;
+					low = 0;
 					high = angleY_gap;
 				}
 
@@ -215,7 +213,7 @@ class CameraControls extends EventDispatcher {
 
 					let Sphere = new Spherical();
 					Sphere.setFromVector3(position.clone().sub(target));
-					Sphere.phi -= scope.angleY - last_angleY;
+					Sphere.phi += scope.angleY - last_angleY;
 					angleY_gap = scope.angleY - Sphere.phi + Math.PI / 2;
 
 					let Sphere_location = new Vector3();
@@ -225,7 +223,7 @@ class CameraControls extends EventDispatcher {
 
 					let Sphere_ = new Spherical();
 					Sphere_.setFromVector3(position.clone().sub(target));
-					Sphere_.theta += scope.angleX - last_angleX;
+					Sphere_.theta -= scope.angleX - last_angleX;
 
 					let Sphere_location_ = new Vector3();
 					Sphere_location_.setFromSpherical(Sphere_).add(target);
