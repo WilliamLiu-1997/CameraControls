@@ -132,7 +132,7 @@ class CameraControls extends EventDispatcher {
 
                 if (scope.dynamicSensibility) {
 
-                    scope.sensibility = Math.max(1, scope.object.position.y);
+                    scope.sensibility = Math.max(1, Math.abs(scope.object.position.y));
 
                 }
 
@@ -261,13 +261,13 @@ class CameraControls extends EventDispatcher {
 
             if (scope.invertRotate) {
 
-                angleXDelta += angleX * 0.64;
-                angleYDelta -= angleY * 0.32;
+                angleXDelta -= angleX * 0.64;
+                angleYDelta += angleY * 0.32;
 
             } else {
 
-                angleXDelta -= angleX * 0.64;
-                angleYDelta += angleY * 0.32;
+                angleXDelta += angleX * 0.64;
+                angleYDelta -= angleY * 0.32;
 
             }
 

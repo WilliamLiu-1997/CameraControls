@@ -112,7 +112,6 @@ class AdvancedControls extends EventDispatcher {
 		};
 
 		this.reset = function () {
-			let old_target = scope.target;
 			scope.target = false;
 
 			scope.object.position.copy(scope.position0);
@@ -125,8 +124,6 @@ class AdvancedControls extends EventDispatcher {
 			scope.dispatchEvent(changeEvent);
 
 			scope.update();
-
-			scope.target = old_target;
 
 			state = STATE.NONE;
 
@@ -145,7 +142,7 @@ class AdvancedControls extends EventDispatcher {
 					if (target) {
 						scope.sensibility = Math.max(0.1, scope.object.position.distanceTo(target));
 					}
-					else { scope.sensibility = Math.max(1, scope.object.position.y); }
+					else { scope.sensibility = Math.max(1, Math.abs(scope.object.position.y)); }
 
 
 				}
@@ -238,6 +235,9 @@ class AdvancedControls extends EventDispatcher {
 					position.copy(Sphere_location_);
 
 				}
+				else {
+					angleY_gap = 0;
+				}
 
 				let look = position.clone();
 				look.add(scope.look);
@@ -320,13 +320,13 @@ class AdvancedControls extends EventDispatcher {
 
 			if (scope.invertRotate) {
 
-				angleXDelta += angleX * 0.64;
-				angleYDelta -= angleY * 0.32;
+				angleXDelta -= angleX * 0.64;
+				angleYDelta += angleY * 0.32;
 
 			} else {
 
-				angleXDelta -= angleX * 0.64;
-				angleYDelta += angleY * 0.32;
+				angleXDelta += angleX * 0.64;
+				angleYDelta -= angleY * 0.32;
 
 			}
 
