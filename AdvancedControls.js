@@ -52,7 +52,7 @@ class CameraControls extends EventDispatcher {
 		this.dampingFactor = 0.1;
 
 		// "look" sets the direction of the focus, this should not be changed
-		this.look = new Vector3(this.o.clone().sub(this.object.position)).normalize();
+		this.look = this.o.clone().sub(this.object.position).normalize();
 
 		// How far you can dolly and pan ( PerspectiveCamera only )
 		this.maxDistance = Infinity;
