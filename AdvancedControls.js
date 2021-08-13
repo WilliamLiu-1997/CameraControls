@@ -18,7 +18,7 @@ import {
 // 1. It can dolly forward/backward (instead of dolly in/out) and pan left/right/up/down.
 // 2. Rotation is centered on the camera itself by default. If the target is set, the rotation will be centered on the target.
 
-class AdvancedControls extends EventDispatcher {
+class CameraControls extends EventDispatcher {
 
 	constructor(object, domElement) {
 
@@ -400,7 +400,7 @@ class AdvancedControls extends EventDispatcher {
 				} else {
 
 					// camera neither orthographic nor perspective
-					console.warn('WARNING: AdvancedControls.js encountered an unknown camera type - pan disabled.');
+					console.warn('WARNING: CameraControls.js encountered an unknown camera type - pan disabled.');
 					scope.enablePan = false;
 
 				}
@@ -425,7 +425,7 @@ class AdvancedControls extends EventDispatcher {
 
 			} else {
 
-				console.warn('WARNING: AdvancedControls.js encountered an unknown camera type - dolly/zoom disabled.');
+				console.warn('WARNING: CameraControls.js encountered an unknown camera type - dolly/zoom disabled.');
 				scope.enableZoom = false;
 
 			}
@@ -448,7 +448,7 @@ class AdvancedControls extends EventDispatcher {
 
 			} else {
 
-				console.warn('WARNING: AdvancedControls.js encountered an unknown camera type - dolly/zoom disabled.');
+				console.warn('WARNING: CameraControls.js encountered an unknown camera type - dolly/zoom disabled.');
 				scope.enableZoom = false;
 
 			}
@@ -958,4 +958,4 @@ class AdvancedControls extends EventDispatcher {
 	};
 }
 
-export { AdvancedControls };
+export { CameraControls };
