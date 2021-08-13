@@ -5,7 +5,7 @@ import {
 	Vector3,
 	Spherical,
 	Plane
-} from '../three.js/build/three.module.js';
+} from '../../../build/three.module.js';
 
 //Author: William https://github.com/WilliamLiu-1997
 
