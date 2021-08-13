@@ -236,6 +236,7 @@ class AdvancedControls extends EventDispatcher {
 					let Sphere_location_ = new Vector3();
 					Sphere_location_.setFromSpherical(Sphere_).add(target);
 					position.copy(Sphere_location_);
+					
 				}
 
 				let look = position.clone();
