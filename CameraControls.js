@@ -183,6 +183,8 @@ class CameraControls extends EventDispatcher {
 					high = angleY_gap;
 				}
 
+				let last_angleX = scope.angleX;
+				let last_angleY = scope.angleY;
 				if (scope.enableDamping) {
 
 					scope.angleX += angleXDelta * scope.dampingFactor * 1.2;
@@ -202,11 +204,6 @@ class CameraControls extends EventDispatcher {
 
 				if (target) {
 
-					let last_phi = Math.acos(last_look.y);
-					let current_phi = Math.acos(scope.look.y);
-					let last_theta = Math.atan2(last_look.x, last_look.z);
-					let current_theta = Math.atan2(scope.look.x, scope.look.z);
-
 					let plane = new Plane();
 					let normal_ = new Vector3(0, 1, 0);
 					plane.setFromCoplanarPoints(position, position.clone().add(scope.look), position.clone().add(normal_));
@@ -218,7 +215,7 @@ class CameraControls extends EventDispatcher {
 
 					let Sphere = new Spherical();
 					Sphere.setFromVector3(position.clone().sub(target));
-					Sphere.phi -= current_phi - last_phi;
+					Sphere.phi -= scope.angleY - last_angleY;
 					angleY_gap = scope.angleY - Sphere.phi + Math.PI / 2;
 
 					let Sphere_location = new Vector3();
@@ -228,7 +225,7 @@ class CameraControls extends EventDispatcher {
 
 					let Sphere_ = new Spherical();
 					Sphere_.setFromVector3(position.clone().sub(target));
-					Sphere_.theta += current_theta - last_theta;
+					Sphere_.theta += scope.angleX - last_angleX;
 
 					let Sphere_location_ = new Vector3();
 					Sphere_location_.setFromSpherical(Sphere_).add(target);
