@@ -11,7 +11,7 @@ This set of controls performs Rotating, dollying (zooming for OrthographicCamera
 ***Rotate*** - middle mouse, or arrow keys / touch: one finger move
 
 ## Updates compared to OrbitControls:
-1. The dollying of PerspectiveCamera is replaced with panning forward and backward. Therefore, this component can be used to move the PerspectiveCamera to six directions including forward, backward, up, down, left and right from current perspective.
+1. The zooming of PerspectiveCamera is replaced with dollying forward and backward.
 2. Rotation is centered on the camera itself by default. If the target is set, the rotation will be centered on the target.
 
 # CameraControls 
