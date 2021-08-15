@@ -92,7 +92,7 @@ class CameraControls extends EventDispatcher {
 
 		// for reset
 		this.position0 = this.object.position.clone();
-		this.target0 = this.target.clone();
+		this.target0 = this.target ? this.target.clone() : false;
 		this.zoom0 = this.object.zoom;
 		this.look0 = this.look.clone();
 		this.angleX0 = this.angleX;
@@ -105,7 +105,7 @@ class CameraControls extends EventDispatcher {
 		this.saveState = function () {
 
 			scope.position0.copy(scope.object.position);
-			scope.target0.copy(scope.target);
+			scope.target0 = scope.target ? scope.target.clone() : false;
 			scope.zoom0 = scope.object.zoom;
 			scope.look0.copy(scope.look);
 			scope.angleX0 = scope.angleX;
@@ -116,7 +116,7 @@ class CameraControls extends EventDispatcher {
 		this.reset = function () {
 
 			scope.object.position.copy(scope.position0);
-			scope.target.copy(scope.target0);
+			scope.target = scope.target0 ? scope.target0.clone() : false;
 			scope.object.zoom = scope.zoom0;
 			scope.look.copy(scope.look0);
 			scope.angleX = scope.angleX0;
