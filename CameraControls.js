@@ -166,14 +166,6 @@ class CameraControls extends EventDispatcher {
 
 				}
 
-				let distance = position.distanceTo(scope.o);
-
-				if (distance > scope.maxDistance) {
-
-					position.add(position.clone().multiplyScalar(scope.maxDistance / distance).sub(position).multiplyScalar(0.2));
-
-				}
-
 				var low, high;
 				if (angleY_gap > 0) {
 					low = angleY_gap;
@@ -234,6 +226,14 @@ class CameraControls extends EventDispatcher {
 				}
 				else {
 					angleY_gap = 0;
+				}
+
+				let distance = position.distanceTo(scope.o);
+
+				if (distance > scope.maxDistance) {
+
+					position.add(position.clone().multiplyScalar(scope.maxDistance / distance).sub(position).multiplyScalar(0.2));
+
 				}
 
 				let look = position.clone();
