@@ -385,8 +385,8 @@ class CameraControls extends EventDispatcher {
 
 				if (scope.object.isPerspectiveCamera) {
 
-					panLeft(deltaX / element.clientHeight, scope.object.matrix);
-					panUp(deltaY / element.clientHeight, scope.object.matrix);
+					panLeft(deltaX / 800, scope.object.matrix);
+					panUp(deltaY / 800, scope.object.matrix);
 
 				} else if (scope.object.isOrthographicCamera) {
 
@@ -408,11 +408,9 @@ class CameraControls extends EventDispatcher {
 
 		function dollyForward(dollyScale) {
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
-
 			if (scope.object.isPerspectiveCamera) {
 
-				moveForward(-100 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
+				moveForward(-100 * scope.sensibility * dollyScale / 800, scope.object.matrix);
 
 			} else if (scope.object.isOrthographicCamera) {
 
@@ -431,11 +429,9 @@ class CameraControls extends EventDispatcher {
 
 		function dollyBackward(dollyScale) {
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
-
 			if (scope.object.isPerspectiveCamera) {
 
-				moveForward(100 * scope.sensibility * dollyScale / element.clientHeight, scope.object.matrix);
+				moveForward(100 * scope.sensibility * dollyScale / 800, scope.object.matrix);
 
 			} else if (scope.object.isOrthographicCamera) {
 
