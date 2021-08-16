@@ -749,7 +749,6 @@ class CameraControls extends EventDispatcher {
 			if (scope.stop) {
 
 				onMouseUp(event);
-				scope.stop = false;
 
 			}
 
@@ -803,6 +802,11 @@ class CameraControls extends EventDispatcher {
 		}
 
 		function onMouseWheel(event) {
+			if (scope.stop) {
+
+				return;
+
+			}
 
 			if (scope.enabled === false || scope.enableZoom === false || (state !== STATE.NONE && state !== STATE.ROTATE)) return;
 
