@@ -409,12 +409,9 @@ class CameraControls extends EventDispatcher {
 
 		function dollyForward(dollyScale) {
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
-
 			if (scope.object.isPerspectiveCamera) {
-				let targetDistance = Math.tan((scope.object.fov / 2) * Math.PI / 180.0) * 2;
 
-				moveForward(-100 * scope.sensibility * targetDistance * dollyScale / element.clientHeight, scope.object.matrix);
+				moveForward(-100 * scope.sensibility * dollyScale, scope.object.matrix);
 
 			} else if (scope.object.isOrthographicCamera) {
 
@@ -433,12 +430,9 @@ class CameraControls extends EventDispatcher {
 
 		function dollyBackward(dollyScale) {
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
-
 			if (scope.object.isPerspectiveCamera) {
-				let targetDistance = Math.tan((scope.object.fov / 2) * Math.PI / 180.0) * 2;
 
-				moveForward(100 * scope.sensibility * targetDistance * dollyScale / element.clientHeight, scope.object.matrix);
+				moveForward(100 * scope.sensibility * dollyScale, scope.object.matrix);
 
 			} else if (scope.object.isOrthographicCamera) {
 
