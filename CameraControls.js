@@ -136,8 +136,8 @@ class CameraControls extends EventDispatcher {
 
 			return function update() {
 
-				var position = scope.object.position;
-				var target = scope.target;
+				let position = scope.object.position;
+				let target = scope.target;
 
 				if (scope.dynamicSensibility) {
 
@@ -166,7 +166,7 @@ class CameraControls extends EventDispatcher {
 
 				}
 
-				var low, high;
+				let low, high;
 				if (angleY_gap > 0) {
 					low = angleY_gap;
 					high = 0;
@@ -228,6 +228,7 @@ class CameraControls extends EventDispatcher {
 					angleY_gap = 0;
 				}
 
+
 				let distance = position.distanceTo(scope.o);
 
 				if (distance > scope.maxDistance) {
@@ -279,33 +280,34 @@ class CameraControls extends EventDispatcher {
 		// internals
 		//
 
-		var scope = this;
+		let scope = this;
 
-		var changeEvent = { type: 'change' };
-		var startEvent = { type: 'start' };
-		var endEvent = { type: 'end' };
+		let changeEvent = { type: 'change' };
+		let startEvent = { type: 'start' };
+		let endEvent = { type: 'end' };
 
-		var STATE = { NONE: - 1, ROTATE: 0, DOLLY: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_DOLLY: 4, TOUCH_PAN: 5 };
+		let STATE = { NONE: - 1, ROTATE: 0, DOLLY: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_DOLLY: 4, TOUCH_PAN: 5 };
 
-		var state = STATE.NONE;
+		let state = STATE.NONE;
 
-		var angleXDelta = 0;
-		var angleYDelta = 0;
-		var angleY_gap = 0;
+		let angleXDelta = 0;
+		let angleYDelta = 0;
+		let angleY_gap = 0;
 
-		var panOffset = new Vector3();
+		let panOffset = new Vector3();
 
-		var rotateStart = new Vector2();
-		var rotateEnd = new Vector2();
-		var rotateDelta = new Vector2();
+		let rotateStart = new Vector2();
+		let rotateEnd = new Vector2();
+		let rotateDelta = new Vector2();
 
-		var panStart = new Vector2();
-		var panEnd = new Vector2();
-		var panDelta = new Vector2();
+		let panStart = new Vector2();
+		let panEnd = new Vector2();
+		let panDelta = new Vector2();
 
-		var dollyStart = new Vector2();
-		var dollyEnd = new Vector2();
-		var dollyDelta = new Vector2();
+		let dollyStart = new Vector2();
+		let dollyEnd = new Vector2();
+		let dollyDelta = new Vector2();
+
 
 		function getAutoRotationAngle() {
 
@@ -330,9 +332,9 @@ class CameraControls extends EventDispatcher {
 
 		}
 
-		var panLeft = function () {
+		let panLeft = function () {
 
-			var v = new Vector3();
+			let v = new Vector3();
 
 			return function panLeft(distance, objectMatrix) {
 
@@ -345,9 +347,9 @@ class CameraControls extends EventDispatcher {
 
 		}();
 
-		var panUp = function () {
+		let panUp = function () {
 
-			var v = new Vector3();
+			let v = new Vector3();
 
 			return function panUp(distance, objectMatrix) {
 
@@ -360,9 +362,9 @@ class CameraControls extends EventDispatcher {
 
 		}();
 
-		var moveForward = function () {
+		let moveForward = function () {
 
-			var v = new Vector3();
+			let v = new Vector3();
 
 			return function moveForward(distance, objectMatrix) {
 
@@ -377,13 +379,15 @@ class CameraControls extends EventDispatcher {
 		}();
 
 		// deltaX and deltaY are in pixels; right and down are positive
-		var pan = function () {
+		let pan = function () {
 
 			return function pan(deltaX, deltaY) {
 
-				var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+				let element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+
 
 				if (scope.object.isPerspectiveCamera) {
+					// half of the fov is center to top of screen
 					let targetDistance = Math.tan((scope.object.fov / 2) * Math.PI / 180.0) * 2;
 
 					panLeft(deltaX * targetDistance / element.clientHeight, scope.object.matrix);
@@ -411,7 +415,9 @@ class CameraControls extends EventDispatcher {
 
 			if (scope.object.isPerspectiveCamera) {
 
-				moveForward(-100 * scope.sensibility * dollyScale, scope.object.matrix);
+				let element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+				let targetDistance = Math.tan((scope.object.fov / 2) * Math.PI / 180.0) * 2000;
+				moveForward(-0.1 * scope.sensibility * targetDistance / element.clientHeight * dollyScale, scope.object.matrix);
 
 			} else if (scope.object.isOrthographicCamera) {
 
@@ -432,7 +438,9 @@ class CameraControls extends EventDispatcher {
 
 			if (scope.object.isPerspectiveCamera) {
 
-				moveForward(100 * scope.sensibility * dollyScale, scope.object.matrix);
+				let element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+				let targetDistance = Math.tan((scope.object.fov / 2) * Math.PI / 180.0) * 2000;
+				moveForward(0.1 * scope.sensibility * targetDistance / element.clientHeight * dollyScale, scope.object.matrix);
 
 			} else if (scope.object.isOrthographicCamera) {
 
@@ -476,7 +484,7 @@ class CameraControls extends EventDispatcher {
 			rotateEnd.set(event.clientX, event.clientY);
 			rotateDelta.subVectors(rotateEnd, rotateStart);
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+			let element = scope.domElement === document ? scope.domElement.body : scope.domElement;
 
 			// rotating across whole screen goes 360 degrees around
 			rotate(1.2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed, 1.2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed);
@@ -545,7 +553,7 @@ class CameraControls extends EventDispatcher {
 
 		function handleKeyDown(event) {
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+			let element = scope.domElement === document ? scope.domElement.body : scope.domElement;
 
 			if (scope.enableRotate === true) {
 
@@ -613,10 +621,10 @@ class CameraControls extends EventDispatcher {
 
 		function handleTouchStartDolly(event) {
 
-			var dx = event.touches[0].pageX - event.touches[1].pageX;
-			var dy = event.touches[0].pageY - event.touches[1].pageY;
+			let dx = event.touches[0].pageX - event.touches[1].pageX;
+			let dy = event.touches[0].pageY - event.touches[1].pageY;
 
-			var distance = Math.sqrt(dx * dx + dy * dy);
+			let distance = Math.sqrt(dx * dx + dy * dy);
 
 			dollyStart.set(0, distance);
 
@@ -633,7 +641,7 @@ class CameraControls extends EventDispatcher {
 			rotateEnd.set(event.touches[0].pageX, event.touches[0].pageY);
 			rotateDelta.subVectors(rotateEnd, rotateStart);
 
-			var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+			let element = scope.domElement === document ? scope.domElement.body : scope.domElement;
 
 			rotate(1.2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed, 1.2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed);
 
@@ -645,10 +653,10 @@ class CameraControls extends EventDispatcher {
 
 		function handleTouchMoveDolly(event) {
 
-			var dx = event.touches[0].pageX - event.touches[1].pageX;
-			var dy = event.touches[0].pageY - event.touches[1].pageY;
+			let dx = event.touches[0].pageX - event.touches[1].pageX;
+			let dy = event.touches[0].pageY - event.touches[1].pageY;
 
-			var distance = Math.sqrt(dx * dx + dy * dy);
+			let distance = Math.sqrt(dx * dx + dy * dy);
 
 			dollyEnd.set(0, distance);
 
