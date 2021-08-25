@@ -1,7 +1,7 @@
 # CameraControls 
 An update of OrbitControls in three.js. 
 
-[Live Demo](https://rawcdn.githack.com/WilliamLiu-1997/three.js/415adb451216e3cc9c1a8cecb27c0f373e1450f5/examples/misc_controls_cameracontrols.html)
+[Live Demo](https://rawcdn.githack.com/WilliamLiu-1997/three.js/094fa760b786b96027edb191dc7e24db6ed15b62/examples/misc_controls_cameracontrols.html)
 
 ## Introduction
 This set of controls performs Rotating, dollying (zooming for OrthographicCamera), and panning.
